@@ -1,2 +1,3 @@
-jQuery ->
-  $('#playlist').sortable()
+$(document).on 'turbolinks:load', ->
+  jQuery ->
+    $('#playlist').sortable()
