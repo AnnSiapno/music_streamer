@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 
  @import "bootstrap-sprockets";
@@ -49,7 +50,7 @@ nav.navbar.navbar-default a:hover {
 
 .btn-primary,
 .btn-primary:hover {
-  color: #666; 
+  color: #666;
   background-color: transparent;
   border: none;
 }

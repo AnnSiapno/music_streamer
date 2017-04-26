@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 gem 'private_pub'
+gem 'record_tag_helper', '~> 1.0'
+gem 'jquery-ui-rails'
 gem 'thin'
 # Log in and sign up function
 gem 'devise', '~> 4.2', '>= 4.2.1'
