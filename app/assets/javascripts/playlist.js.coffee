@@ -1,3 +1,2 @@
 jQuery ->
-  $('#playlist').sortable
-  
+  $('#playlist').sortable()
