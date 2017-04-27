@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   get 'welcome/view_playlist'
   get 'welcome/delete_playlist'
   get 'welcome/remove_song'
-  get 'welcome/increase_playlist_order'
-  get 'welcome/decrease_playlist_order'
-  get 'welcome/increase_song_order'
-  get 'welcome/decrease_song_order'
 
   post 'welcome/create_playlist'
   post 'welcome/add_song_to_playlist'
+
+  resources :welcome do
+    collection { post :sort }
+  end
 
   get 'profile/view'
   get 'profile/edit_page'

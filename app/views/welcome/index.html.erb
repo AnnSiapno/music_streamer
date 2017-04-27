@@ -27,8 +27,6 @@
     <td><p><%=playlist.name%></p></td>
     <td><p><%=link_to 'show',action: 'view_playlist' ,playlist_id: playlist.id%></p></td>
     <td><p><%=link_to 'delete',action: 'delete_playlist' ,playlist_id: playlist.id%></p></td>
-    <td><%= link_to 'move up' %></td>
-    <td><%= link_to 'move down' %></td>
     <td><%= link_to 'add songs' %></td>
   </tr>
   <% end %>

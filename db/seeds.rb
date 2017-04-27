@@ -27,8 +27,8 @@ Song.create(title: 'Superhigh', duration: 236, year: 2010, artist: 'Rick Ross fe
 Profile.create(first_name: 'Anderson',last_name: '.Paak',dob: Date.parse("08/02/1986"),avatar: 'http://static.djbooth.net/pics-features/rect/anderson-paak-2016-year-of.jpg',bio: 'Just an ordinary musical genuis',user_id: 1)
 Profile.create(first_name: 'Eddie',last_name: 'Huang',dob: Date.parse("01/03/1985"),avatar: 'https://addicted2success.com/wp-content/uploads/2012/10/eddie-huang-entrepreneur1.jpeg',bio: 'Foodie, human panda and the OG chinkstronaut ',user_id: 2)
 
-PlaylistToSong.create(playlist_id: 1,song_id: 1,order: 1)
-PlaylistToSong.create(playlist_id: 1,song_id: 2,order: 2)
-PlaylistToSong.create(playlist_id: 1,song_id: 3,order: 3)
-PlaylistToSong.create(playlist_id: 1,song_id: 4,order: 4)
-PlaylistToSong.create(playlist_id: 1,song_id: 5,order: 5)
+PlaylistToSong.create(playlist_id: 1,song_id: 1)
+PlaylistToSong.create(playlist_id: 1,song_id: 2)
+PlaylistToSong.create(playlist_id: 1,song_id: 3)
+PlaylistToSong.create(playlist_id: 1,song_id: 4)
+PlaylistToSong.create(playlist_id: 1,song_id: 5)

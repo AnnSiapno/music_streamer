@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   def index
     @profiles = Profile.order('first_name ASC')
     @user = current_user
-    @user_playlists = Playlist.where(user_id: current_user.id).order(:order)
+    @user_playlists = Playlist.where(user_id: current_user.id).order('name ASC')
     if Profile.where(user_id: current_user.id).exists?
       @welcome_text = @user.profile.first_name
     else
@@ -17,12 +17,12 @@ class WelcomeController < ApplicationController
     search_string = params[:search_string].chomp('%')
     playlist_id = params[:playlist_id].to_i
     song_id = params[:song_id].to_i
-    last_song_in_playlist = PlaylistToSong.where(playlist_id: playlist_id).order(:order).last
-    bottom_order_value = 1
-    if !last_song_in_playlist == nil
-    bottom_order_value = last_song_in_playlist.order + 1
-    end
-    new_entry = PlaylistToSong.new(playlist_id: playlist_id,song_id: song_id, order: (bottom_order_value))
+    # last_song_in_playlist = PlaylistToSong.where(playlist_id: playlist_id).order(:order).last
+    # bottom_order_value = 1
+    # if !last_song_in_playlist == nil
+    # bottom_order_value = last_song_in_playlist.order + 1
+    # end
+    new_entry = PlaylistToSong.new(playlist_id: playlist_id,song_id: song_id)
     pp new_entry
     new_entry.save
     redirect_to action: 'search',search: search_string
@@ -46,7 +46,7 @@ class WelcomeController < ApplicationController
   def view_playlist
     @playlist_id = params[:playlist_id]
     @playlist_songs = []
-    @playlist_to_songs_reference = PlaylistToSong.where(playlist_id: @playlist_id).order(:order)
+    @playlist_to_songs_reference = PlaylistToSong.where(playlist_id: @playlist_id)
     @playlist_to_songs_reference.each do |song_reference|
     @playlist_songs <<  Song.where(id: song_reference.song_id).first
     end
@@ -67,32 +67,10 @@ class WelcomeController < ApplicationController
     redirect_to action: 'view_playlist',playlist_id: playlist_id
   end
 
-  def increase_playlist_order
-    #work in progress
-    redirect_to action: 'index'
-  end
-
-  def decrease_playlist_order
-    #work in progress
-    redirect_to action: 'index'
-  end
-  def increase_playlist_order
-    #work in progress
-    redirect_to action: ''
-  end
-  def decrease_song_order
-    #work in progress
-    redirect_to action: ''
-  end
-
-  def switch_song_position
-    #work in progress
-    redirect_to action: 'index'
-  end
-
-  def switch_playlist_position
-    #work in progress
-    redirect_to action: 'index'
+  def sort
+    params[:PlaylistToSong].each_with_index do |id, index|
+      PlaylistToSong.update_all({position: index+1}, {id: id})
+    end
   end
 
 end

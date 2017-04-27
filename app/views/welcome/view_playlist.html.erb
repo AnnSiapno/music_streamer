@@ -19,7 +19,7 @@ end %>
     <td><h3>Duration</h3></td>
     <td><h3>Remove</h3></td>
   </tr>
-  <tbody id="playlist">
+  <tbody id="playlist" data-update-url="<%= sort_welcome_index_url %>">
   <% @playlist_songs.each do |song| %>
     <%= content_tag_for :tr, song do %>
       <td><%= song.title %></td>
