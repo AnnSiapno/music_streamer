@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426044522) do
+ActiveRecord::Schema.define(version: 20170427033800) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20170426044522) do
   create_table "playlist_to_songs", force: :cascade do |t|
     t.integer  "playlist_id"
     t.integer  "song_id"
-    t.integer  "order"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "position"
     t.index ["playlist_id"], name: "index_playlist_to_songs_on_playlist_id"
     t.index ["song_id"], name: "index_playlist_to_songs_on_song_id"
   end

@@ -46,7 +46,7 @@ class WelcomeController < ApplicationController
   def view_playlist
     @playlist_id = params[:playlist_id]
     @playlist_songs = []
-    @playlist_to_songs_reference = PlaylistToSong.where(playlist_id: @playlist_id)
+    @playlist_to_songs_reference = PlaylistToSong.where(playlist_id: @playlist_id).order('position')
     @playlist_to_songs_reference.each do |song_reference|
     @playlist_songs <<  Song.where(id: song_reference.song_id).first
     end
@@ -68,9 +68,16 @@ class WelcomeController < ApplicationController
   end
 
   def sort
-    params[:PlaylistToSong].each_with_index do |id, index|
+    @playlist_id = params[:playlist_id]
+    @playlist_songs = []
+    @playlist_to_songs_reference = PlaylistToSong.where(playlist_id: @playlist_id)
+    @playlist_to_songs_reference.each do |song_reference|
+    @playlist_songs <<  Song.where(id: song_reference.song_id).first
+    end
+    @playlist_songs.each_with_index do |id, index|
       PlaylistToSong.update_all({position: index+1}, {id: id})
     end
+      head :ok
   end
 
 end
